@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: metrovision-db
+    environment:
+      POSTGRES_USER: metrovision
+      POSTGRES_PASSWORD: metrovision
+      POSTGRES_DB: metrovision
+    ports:
+      - "5432:5432"
+    volumes:
+      - metrovision_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U metrovision"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: metrovision-api
+    env_file:
+      - ./backend/.env.example
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    command: sh -c "python seed.py && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  frontend:
+    build: ./frontend
+    container_name: metrovision-web
+    env_file:
+      - ./frontend/.env.example
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+
+volumes:
+  metrovision_pg:

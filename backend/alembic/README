@@ -1,0 +1,1 @@
+Alembic folder placeholder. The application creates tables automatically for local demo. For production, run alembic init and generate migrations from SQLAlchemy models.

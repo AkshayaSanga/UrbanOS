@@ -1,0 +1,1 @@
+export default function StatCard({label,value,helper}:{label:string;value:string|number;helper?:string}){ return <div className="rounded-2xl border border-mvborder bg-mvcard p-5"><p className="text-sm text-mvmuted">{label}</p><h3 className="mt-2 text-3xl font-bold">{value}</h3>{helper&&<p className="mt-2 text-xs text-mvmuted">{helper}</p>}</div> }
