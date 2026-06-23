@@ -17,10 +17,12 @@ export default function Sidebar() {
   const path = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 border-r border-slate-800 bg-slate-950 p-5">
-      <div className="mb-8">
-        <div className="text-2xl font-bold text-sky-400">MetroVision</div>
-        <div className="text-sm text-slate-400">Smart City Command Center</div>
+    <aside className="fixed left-0 top-0 h-screen w-72 border-r border-slate-200 bg-white p-5 shadow-sm">
+      <div className="mb-8 rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 p-5 text-white shadow">
+        <h1 className="text-2xl font-bold">UrbanOS</h1>
+        <p className="mt-1 text-sm text-blue-100">
+          Smart City Operations Platform
+        </p>
       </div>
 
       <nav className="space-y-2">
@@ -30,10 +32,10 @@ export default function Sidebar() {
             <Link
               key={href}
               href={href}
-              className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${
+              className={`block rounded-xl px-4 py-3 text-sm font-semibold transition ${
                 active
-                  ? "bg-sky-400 text-slate-950"
-                  : "text-slate-300 hover:bg-slate-900 hover:text-white"
+                  ? "bg-blue-50 text-blue-700"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
               }`}
             >
               {label}
@@ -42,10 +44,10 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="absolute bottom-5 left-5 right-5 rounded-xl border border-slate-800 bg-slate-900 p-4">
-        <p className="text-sm font-semibold">Hyderabad Operations</p>
-        <p className="mt-1 text-xs text-slate-400">
-          Live municipal monitoring console
+      <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+        <p className="text-sm font-bold text-slate-900">Hyderabad Console</p>
+        <p className="mt-1 text-xs leading-5 text-slate-500">
+          Complaint, asset, alert and department monitoring system.
         </p>
       </div>
     </aside>
