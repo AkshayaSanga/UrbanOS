@@ -13,13 +13,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const items = [
-  ["Dashboard", "/dashboard", LayoutDashboard],
-  ["Complaints", "/complaints", FileText],
-  ["Assets", "/assets", Building2],
-  ["Alerts", "/alerts", AlertTriangle],
-  ["GIS Map", "/map", Map],
-  ["Reports", "/reports", BarChart3],
-  ["Admin", "/admin", Shield],
+  { label: "Dashboard", href: "/dashboard", Icon: LayoutDashboard },
+  { label: "Complaints", href: "/complaints", Icon: FileText },
+  { label: "Assets", href: "/assets", Icon: Building2 },
+  { label: "Alerts", href: "/alerts", Icon: AlertTriangle },
+  { label: "GIS Map", href: "/map", Icon: Map },
+  { label: "Reports", href: "/reports", Icon: BarChart3 },
+  { label: "Admin", href: "/admin", Icon: Shield },
 ];
 
 export default function Sidebar() {
@@ -38,13 +38,13 @@ export default function Sidebar() {
       </div>
 
       <nav className="space-y-2">
-        {items.map(([label, href, Icon]) => {
+        {items.map(({ label, href, Icon }) => {
           const active = path === href;
 
           return (
             <Link
-              key={href as string}
-              href={href as string}
+              key={href}
+              href={href}
               className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition ${
                 active
                   ? "bg-sky-500 text-white shadow-lg shadow-sky-500/20"
@@ -52,7 +52,7 @@ export default function Sidebar() {
               }`}
             >
               <Icon size={18} />
-              {label}
+              <span>{label}</span>
             </Link>
           );
         })}
