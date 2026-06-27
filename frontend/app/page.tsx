@@ -9,143 +9,91 @@ import {
 import Link from "next/link";
 
 const metrics = [
-  {
-    value: "128",
-    title: "Active Complaints",
-    Icon: FileText,
-  },
-  {
-    value: "1,284",
-    title: "City Assets",
-    Icon: Building2,
-  },
-  {
-    value: "5",
-    title: "Critical Alerts",
-    Icon: Siren,
-  },
-  {
-    value: "89%",
-    title: "SLA Compliance",
-    Icon: ShieldCheck,
-  },
-];
-
-const features = [
-  {
-    title: "Complaint Management",
-    description: "Complete citizen issue lifecycle.",
-  },
-  {
-    title: "GIS Mapping",
-    description: "Interactive infrastructure visualization.",
-  },
-  {
-    title: "Asset Monitoring",
-    description: "Roads, CCTV, streetlights and utilities.",
-  },
-  {
-    title: "Analytics",
-    description: "Operational dashboards and KPIs.",
-  },
+  { value: "326", title: "Open Complaints", Icon: FileText },
+  { value: "1,284", title: "Monitored Assets", Icon: Building2 },
+  { value: "28", title: "Active Incidents", Icon: Siren },
+  { value: "96.2%", title: "SLA Compliance", Icon: ShieldCheck },
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-[#111827] text-[#F9FAFB]">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-sky-400">
-            Enterprise Platform
+          <p className="text-xs uppercase tracking-[0.3em] text-[#D97706]">
+            Municipal Operations Suite
           </p>
-
-          <h1 className="mt-2 text-3xl font-bold">
-            MetroVision
-          </h1>
-
-          <p className="text-slate-400">
-            Smart City Operations Platform
+          <h1 className="mt-2 text-3xl font-semibold">MetroVision</h1>
+          <p className="text-sm text-slate-400">
+            Integrated Command Platform for Urban Infrastructure
           </p>
         </div>
 
         <Link
           href="/login"
-          className="rounded-xl bg-sky-500 px-6 py-3 font-semibold hover:bg-sky-400"
+          className="rounded-md bg-[#0F766E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#115E59]"
         >
           Sign In
         </Link>
       </nav>
 
-      <section className="mx-auto grid max-w-7xl items-center gap-12 px-8 py-20 lg:grid-cols-2">
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-8 py-16 lg:grid-cols-2">
         <div>
-          <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-2 text-sm text-sky-300">
-            Government • Municipal • Enterprise
+          <span className="rounded-full border border-[#334155] bg-[#1F2937] px-4 py-2 text-sm text-slate-300">
+            Government • Municipal • Field Operations
           </span>
 
-          <h2 className="mt-8 text-6xl font-bold leading-tight">
-            Modern Smart City
-            <br />
-            Command Center
+          <h2 className="mt-8 max-w-3xl text-5xl font-semibold leading-tight tracking-tight">
+            Operational intelligence for city services and public infrastructure.
           </h2>
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
-            MetroVision helps municipal corporations manage complaints,
-            infrastructure, emergency response, GIS monitoring,
-            analytics and field operations through one centralized platform.
+          <p className="mt-6 max-w-xl text-base leading-8 text-slate-300">
+            MetroVision helps city teams manage complaints, infrastructure
+            assets, emergency events, GIS monitoring, reports and field
+            coordination from one operational command center.
           </p>
 
-          <div className="mt-10 flex gap-4">
+          <div className="mt-8 flex gap-4">
             <Link
               href="/dashboard"
-              className="flex items-center gap-2 rounded-xl bg-sky-500 px-6 py-4 font-semibold hover:bg-sky-400"
+              className="flex items-center gap-2 rounded-md bg-[#0F766E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#115E59]"
             >
-              Open Dashboard
-              <ArrowRight size={18} />
+              Open Command Center
+              <ArrowRight size={17} />
             </Link>
 
             <Link
               href="/login"
-              className="rounded-xl border border-slate-700 px-6 py-4 hover:bg-slate-900"
+              className="rounded-md border border-[#334155] px-6 py-3 text-sm font-semibold text-slate-200 hover:bg-[#1F2937]"
             >
               Login
             </Link>
           </div>
         </div>
 
-        <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-2xl">
-          <div className="mb-6 flex items-center justify-between">
+        <div className="rounded-2xl border border-[#334155] bg-[#1F2937] p-6 shadow-2xl">
+          <div className="mb-5 flex items-center justify-between border-b border-[#334155] pb-4">
             <div>
-              <h3 className="text-lg font-bold">
-                Operations Snapshot
+              <h3 className="text-base font-semibold text-white">
+                Hyderabad Operations Snapshot
               </h3>
-
-              <p className="text-sm text-slate-400">
-                Hyderabad City Overview
-              </p>
+              <p className="text-sm text-slate-400">Live municipal overview</p>
             </div>
-
-            <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400">
+            <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">
               LIVE
             </span>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {metrics.map((metric) => (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {metrics.map(({ value, title, Icon }) => (
               <div
-                key={metric.title}
-                className="rounded-2xl border border-slate-800 bg-slate-950 p-6"
+                key={title}
+                className="rounded-xl border border-[#334155] bg-[#111827] p-5"
               >
-                <metric.Icon
-                  size={28}
-                  className="mb-4 text-sky-400"
-                />
-
-                <p className="text-sm text-slate-400">
-                  {metric.title}
-                </p>
-
-                <p className="mt-2 text-4xl font-bold">
-                  {metric.value}
+                <Icon size={24} className="mb-4 text-[#D97706]" />
+                <p className="text-sm text-slate-400">{title}</p>
+                <p className="mt-2 text-3xl font-semibold text-white">
+                  {value}
                 </p>
               </div>
             ))}
@@ -153,21 +101,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-8 pb-20 md:grid-cols-4">
-        {features.map((feature) => (
+      <section className="mx-auto grid max-w-7xl gap-5 px-8 pb-16 md:grid-cols-4">
+        {[
+          ["Complaint Operations", "Track service issues from intake to closure."],
+          ["GIS Monitoring", "View incidents, assets and zones spatially."],
+          ["Infrastructure Control", "Monitor assets, health and maintenance."],
+          ["Command Analytics", "Review SLA, departments and trends."],
+        ].map(([title, desc]) => (
           <div
-            key={feature.title}
-            className="rounded-2xl border border-slate-800 bg-slate-900 p-6"
+            key={title}
+            className="rounded-xl border border-[#334155] bg-[#1F2937] p-5"
           >
-            <Map className="mb-5 text-sky-400" />
-
-            <h3 className="font-semibold">
-              {feature.title}
-            </h3>
-
-            <p className="mt-3 text-sm leading-6 text-slate-400">
-              {feature.description}
-            </p>
+            <Map className="mb-4 text-[#0F766E]" />
+            <h3 className="font-semibold text-white">{title}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-400">{desc}</p>
           </div>
         ))}
       </section>
