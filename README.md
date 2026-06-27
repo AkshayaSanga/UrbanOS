@@ -1,592 +1,84 @@
-\# UrbanOS
+# MetroVision
 
+## Enterprise Smart City Operations Platform
 
+MetroVision is an enterprise-grade Smart City Operations Platform built to help municipal corporations and government agencies manage citizen complaints, public infrastructure, emergency response, GIS operations, analytics, and field services through a unified command center.
 
-\## Smart City Operations Platform
+The platform demonstrates real-world enterprise software engineering with secure authentication, role-based access control, interactive GIS mapping, operational dashboards, asset management, emergency alert workflows, analytics, and reporting.
 
+---
 
+## Key Features
 
-UrbanOS is a full-stack municipal operations platform designed to help city administrations manage complaints, infrastructure assets, emergency alerts, field operations, analytics, and citizen engagement from a unified command center.
+### Citizen Services
 
+* Secure Authentication (JWT)
+* Citizen Complaint Registration
+* Complaint Status Tracking
+* Complaint History
+* Real-time Status Updates
 
+### Complaint Management
 
-The platform provides a production-style government dashboard with GIS monitoring, workflow management, role-based access control, and operational analytics.
+* Complete Complaint Lifecycle
+* Priority Management
+* Department Assignment
+* Officer Assignment
+* Status Workflow
 
+  * Submitted
+  * Assigned
+  * In Progress
+  * Resolved
+  * Rejected
+* Image Attachments
+* Timeline Tracking
 
+### Asset Management
 
-\---
+* Streetlights
+* Traffic Signals
+* Water Infrastructure
+* Roads
+* CCTV Cameras
+* Maintenance Scheduling
+* Asset Health Monitoring
 
+### Emergency Management
 
+* Emergency Alerts
+* Critical Incident Tracking
+* City-wide Notifications
+* Escalation Workflows
 
-\## Features
+### GIS Command Center
 
+* Interactive OpenStreetMap Integration
+* Complaint Visualization
+* Asset Mapping
+* Emergency Locations
+* Operational Monitoring
 
+### Analytics Dashboard
 
-\### Citizen Services
+* Complaint KPIs
+* Asset Statistics
+* SLA Compliance
+* Resolution Trends
+* Department Performance
+* Operational Insights
 
+### Administration
 
+* Role-Based Access Control (RBAC)
+* User Management
+* Department Management
+* Audit Logs
+* Activity Monitoring
 
-\* Register and login securely
+### Reports
 
-\* Submit civic complaints
-
-\* Track complaint status
-
-\* View complaint history
-
-\* Receive updates on issue resolution
-
-
-
-\### Complaint Management
-
-
-
-\* Complaint lifecycle tracking
-
-\* Status transitions:
-
-
-
-&#x20; \* Submitted
-
-&#x20; \* Assigned
-
-&#x20; \* In Progress
-
-&#x20; \* Resolved
-
-&#x20; \* Rejected
-
-\* Officer assignment workflow
-
-\* Department routing
-
-
-
-\### Asset Management
-
-
-
-\* Road infrastructure tracking
-
-\* Water infrastructure monitoring
-
-\* Traffic asset management
-
-\* Sanitation asset records
-
-\* Maintenance scheduling
-
-
-
-\### Emergency Alerts
-
-
-
-\* Critical incident management
-
-\* City-wide alerts
-
-\* Emergency response coordination
-
-\* Priority escalation workflows
-
-
-
-\### GIS Command Center
-
-
-
-\* Interactive city map
-
-\* OpenStreetMap integration
-
-\* Complaint visualization
-
-\* Asset monitoring
-
-\* Operational overview
-
-
-
-\### Analytics Dashboard
-
-
-
-\* Total complaints
-
-\* Pending complaints
-
-\* Resolved complaints
-
-\* Active assets
-
-\* Critical alerts
-
-\* SLA compliance monitoring
-
-\* Trend analysis
-
-\* Department performance metrics
-
-
-
-\### Administration
-
-
-
-\* Role-based access control
-
-\* User management
-
-\* Department management
-
-\* Audit logs
-
-\* Activity tracking
-
-
-
-\### Reporting
-
-
-
-\* CSV exports
-
-\* Operational summaries
-
-\* Department reports
-
-\* Performance analytics
-
-
-
-\---
-
-
-
-\## Tech Stack
-
-
-
-\### Frontend
-
-
-
-\* Next.js 15
-
-\* TypeScript
-
-\* Tailwind CSS
-
-\* Recharts
-
-\* Axios
-
-\* OpenStreetMap
-
-
-
-\### Backend
-
-
-
-\* FastAPI
-
-\* Python
-
-\* SQLAlchemy
-
-\* PostgreSQL
-
-\* Pydantic
-
-\* JWT Authentication
-
-\* Passlib
-
-
-
-\### Database
-
-
-
-\* PostgreSQL
-
-
-
-\### DevOps
-
-
-
-\* Docker
-
-\* Docker Compose
-
-
-
-\---
-
-
-
-\## Architecture
-
-
-
-```text
-
-Frontend (Next.js)
-
-&#x20;       │
-
-&#x20;       ▼
-
-REST API (FastAPI)
-
-&#x20;       │
-
-&#x20;       ▼
-
-PostgreSQL Database
-
-```
-
-
-
-\---
-
-
-
-\## Project Structure
-
-
-
-```text
-
-UrbanOS
-
-│
-
-├── backend
-
-│   ├── app
-
-│   ├── models
-
-│   ├── routes
-
-│   ├── services
-
-│   └── database
-
-│
-
-├── frontend
-
-│   ├── app
-
-│   ├── components
-
-│   ├── lib
-
-│   └── types
-
-│
-
-├── docker-compose.yml
-
-└── README.md
-
-```
-
-
-
-\---
-
-
-
-\## Local Development
-
-
-
-\### Clone Repository
-
-
-
-```bash
-
-git clone https://github.com/AkshayaSanga/UrbanOS.git
-
-cd UrbanOS
-
-```
-
-
-
-\### Run Using Docker
-
-
-
-```bash
-
-docker compose up --build
-
-```
-
-
-
-\---
-
-
-
-\## Application URLs
-
-
-
-Frontend
-
-
-
-```text
-
-http://localhost:3000
-
-```
-
-
-
-Backend API
-
-
-
-```text
-
-http://localhost:8000
-
-```
-
-
-
-Swagger Documentation
-
-
-
-```text
-
-http://localhost:8000/docs
-
-```
-
-
-
-\---
-
-
-
-\## Demo Credentials
-
-
-
-\### Super Admin
-
-
-
-```text
-
-Email: admin@metrovision.dev
-
-Password: Admin@123
-
-```
-
-
-
-\### Officer
-
-
-
-```text
-
-Email: officer@metrovision.dev
-
-Password: Officer@123
-
-```
-
-
-
-\### Citizen
-
-
-
-```text
-
-Email: citizen@metrovision.dev
-
-Password: Citizen@123
-
-```
-
-
-
-\---
-
-
-
-\## Environment Variables
-
-
-
-\### Backend
-
-
-
-Create:
-
-
-
-```text
-
-backend/.env
-
-```
-
-
-
-Example:
-
-
-
-```env
-
-DATABASE\_URL=postgresql://postgres:postgres@db:5432/urbanos
-
-SECRET\_KEY=your-secret-key
-
-ACCESS\_TOKEN\_EXPIRE\_MINUTES=60
-
-```
-
-
-
-\### Frontend
-
-
-
-Create:
-
-
-
-```text
-
-frontend/.env.local
-
-```
-
-
-
-Example:
-
-
-
-```env
-
-NEXT\_PUBLIC\_API\_URL=http://localhost:8000
-
-```
-
-
-
-\---
-
-
-
-\## Screenshots
-
-
-
-Add screenshots after deployment:
-
-
-
-\* Login
-
-\* Dashboard
-
-\* Complaints
-
-\* Assets
-
-\* Alerts
-
-\* GIS Map
-
-\* Reports
-
-\* Admin Panel
-
-
-
-\---
-
-
-
-\## Future Enhancements
-
-
-
-\* Work Order Management
-
-\* SLA Tracking
-
-\* Push Notifications
-
-\* Mobile Application
-
-\* AI-based Complaint Classification
-
-\* Predictive Infrastructure Maintenance
-
-\* Advanced GIS Layers
-
-\* Real-time Incident Monitoring
-
-
-
-\---
-
-
-
-\## Resume Description
-
-
-
-UrbanOS is a production-style Smart City Operations Platform developed using Next.js, FastAPI, PostgreSQL, Docker, and GIS technologies. The platform supports complaint management, asset tracking, emergency alerting, analytics dashboards, role-based workflows, and municipal operations monitoring through a centralized command center.
-
-
-
-\---
-
-
-
-\## Author
-
-
-
-Akshaya Sanga
-
-
-
-GitHub:
-
-https://github.com/AkshayaSanga
-
-
-
-LinkedIn:
-
-https://linkedin.com/in/akshaya-sanga-b9bb07307
-
-
-
+* CSV Export
+* PDF Reports
+* Operational Reports
+* Performance Analytics
