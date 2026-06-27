@@ -82,3 +82,19 @@ The platform demonstrates real-world enterprise software engineering with secure
 * PDF Reports
 * Operational Reports
 * Performance Analytics
+
+
+
+
+## Technology Stack
+
+| Layer | Technology |
+|--------|------------|
+| Frontend | Next.js 15, TypeScript, Tailwind CSS, ShadCN UI |
+| Backend | FastAPI, Python |
+| Database | PostgreSQL |
+| ORM | SQLAlchemy |
+| Authentication | JWT |
+| Maps | Leaflet, OpenStreetMap |
+| Charts | Recharts |
+| DevOps | Docker, Docker Compose |
