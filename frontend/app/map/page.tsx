@@ -1,18 +1,18 @@
 "use client";
 
+import DashboardLayout from "@/components/layout/DashboardLayout";
 import dynamic from "next/dynamic";
 
-const CityMap = dynamic(
-  () => import("../../components/map/CityMap"),
-  {
-    ssr: false,
-  }
-);
+const CityMap = dynamic(() => import("../../components/map/CityMap"), {
+  ssr: false,
+});
 
 export default function MapPage() {
   return (
-    <div className="p-6">
-      <CityMap />
-    </div>
+    <DashboardLayout>
+      <div className="p-6">
+        <CityMap />
+      </div>
+    </DashboardLayout>
   );
 }
