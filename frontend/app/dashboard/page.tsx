@@ -1,5 +1,10 @@
 "use client";
+
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import KPICard from "@/components/dashboard/KPICard";
+
+
+
 import {
   AlertTriangle,
   Building2,
@@ -127,31 +132,35 @@ export default function DashboardPage() {
 
     <DashboardHeader />
 
-      <section className="mb-6 grid gap-4 md:grid-cols-4">
-        {operations.map(({ label, value, meta, Icon }) => (
-          <div
-            key={label}
-            className="rounded-xl border border-[#CBD5E1] bg-white p-5 shadow-sm"
-          >
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-sm text-[#64748B]">{label}</p>
+      <section className="mb-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+  <KPICard
+    title="Open Incidents"
+    value={326}
+    trend="+14% Today"
+    icon={<AlertTriangle size={24} />}
+  />
 
-                <p className="mt-2 text-3xl font-semibold text-[#111827]">
-                  {value}
-                </p>
+  <KPICard
+    title="Assets Online"
+    value={1284}
+    trend="98% Operational"
+    icon={<Building2 size={24} />}
+  />
 
-                <p className="mt-2 text-xs text-[#64748B]">{meta}</p>
-              </div>
+  <KPICard
+    title="Officers Online"
+    value={36}
+    trend="Morning Shift"
+    icon={<Users size={24} />}
+  />
 
-              <div className="rounded-md bg-[#F8FAFC] p-2 text-[#0F766E]">
-                <Icon size={21} />
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-
+  <KPICard
+    title="Critical Alerts"
+    value={12}
+    trend="3 Escalated"
+    icon={<ShieldCheck size={24} />}
+  />
+</section>
       <section className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
         <div className="rounded-xl border border-[#CBD5E1] bg-white p-5 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
