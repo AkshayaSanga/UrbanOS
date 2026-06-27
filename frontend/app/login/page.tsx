@@ -8,21 +8,46 @@ export default function Login() {
   const [email, setEmail] = useState("admin@metrovision.dev");
   const [password, setPassword] = useState("Admin@123");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+
     setError("");
+    setLoading(true);
 
     try {
-      const res = await api.post("/auth/login", { email, password });
+      const res = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
       localStorage.setItem("token", res.data.access_token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
       window.location.href = "/dashboard";
-    } catch (err) {
-      setError("Login failed. Check backend URL or CORS configuration.");
+    } catch (err: any) {
+      console.error("========== LOGIN ERROR ==========");
       console.error(err);
+      console.error("API URL:", api.defaults.baseURL);
+
+      if (err.response) {
+        console.error("Status:", err.response.status);
+        console.error("Data:", err.response.data);
+
+        setError(
+          err.response.data?.detail ||
+            `Server Error (${err.response.status})`
+        );
+      } else if (err.request) {
+        console.error("No response received");
+        setError("Network Error - Backend unreachable or CORS blocked");
+      } else {
+        console.error(err.message);
+        setError(err.message);
+      }
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -45,37 +70,42 @@ export default function Login() {
         </p>
 
         {error && (
-          <p className="mt-4 rounded-xl border border-red-500/20 bg-red-500/10 p-3 text-sm font-medium text-red-400">
-            {error}
-          </p>
+          <div className="mt-5 rounded-xl border border-red-500/30 bg-red-500/10 p-3">
+            <p className="text-sm text-red-300">{error}</p>
+          </div>
         )}
 
         <label className="mt-6 block text-sm font-semibold text-slate-300">
           Email
         </label>
+
         <input
-          className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 p-3 text-white outline-none focus:border-sky-500"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 p-3 outline-none focus:border-sky-500"
         />
 
-        <label className="mt-4 block text-sm font-semibold text-slate-300">
+        <label className="mt-5 block text-sm font-semibold text-slate-300">
           Password
         </label>
+
         <input
           type="password"
-          className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 p-3 text-white outline-none focus:border-sky-500"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 p-3 outline-none focus:border-sky-500"
         />
 
-        <button className="mt-6 w-full rounded-xl bg-sky-500 p-3 font-bold text-white hover:bg-sky-400">
-          Login
+        <button
+          disabled={loading}
+          className="mt-6 w-full rounded-xl bg-sky-500 p-3 font-bold text-white hover:bg-sky-400 disabled:opacity-60"
+        >
+          {loading ? "Signing In..." : "Login"}
         </button>
 
         <Link
           href="/register"
-          className="mt-4 block text-center text-sm text-slate-400 hover:text-sky-400"
+          className="mt-5 block text-center text-sm text-slate-400 hover:text-sky-400"
         >
           Create citizen account
         </Link>
