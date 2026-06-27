@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "https://urbanos-backend.onrender.com";
+
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000",
+  baseURL: API_URL,
 });
 
 api.interceptors.request.use((config) => {
