@@ -1,104 +1,118 @@
+import {
+  ArrowRight,
+  Building2,
+  FileText,
+  Map,
+  ShieldCheck,
+  Siren,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f4f7fb] text-slate-900">
+    <main className="min-h-screen bg-slate-950 text-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
         <div>
-          <h1 className="text-2xl font-bold text-blue-700">UrbanOS</h1>
-          <p className="text-sm text-slate-500">
-            Smart City Operations Platform
+          <p className="text-xs uppercase tracking-[0.3em] text-sky-400">
+            Enterprise Platform
           </p>
+          <h1 className="mt-2 text-3xl font-bold">MetroVision</h1>
+          <p className="text-slate-400">Smart City Operations Platform</p>
         </div>
 
         <Link
           href="/login"
-          className="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow hover:bg-blue-700"
+          className="rounded-xl bg-sky-500 px-6 py-3 font-semibold hover:bg-sky-400"
         >
-          Login
+          Sign In
         </Link>
       </nav>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-8 py-12 lg:grid-cols-2 lg:items-center">
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-8 py-20 lg:grid-cols-2">
         <div>
-          <span className="rounded-full bg-blue-50 px-4 py-2 text-sm font-bold text-blue-700">
-            Government-grade Municipal Command Centre
+          <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-2 text-sm text-sky-300">
+            Government • Municipal • Enterprise
           </span>
 
-          <h2 className="mt-6 text-5xl font-bold leading-tight text-slate-950">
-            Operate complaints, assets, alerts and field teams from one civic
-            platform.
+          <h2 className="mt-8 text-6xl font-bold leading-tight">
+            Modern Smart City
+            <br />
+            Command Center
           </h2>
 
-          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-            UrbanOS gives administrators, officers and departments a realistic
-            smart city workflow for complaint resolution, GIS monitoring,
-            emergency alerts and public asset management.
+          <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
+            MetroVision helps municipal corporations manage complaints,
+            infrastructure, emergency response, GIS monitoring, analytics and
+            field operations through a single platform.
           </p>
 
-          <div className="mt-8 flex gap-4">
+          <div className="mt-10 flex gap-4">
             <Link
-              href="/login"
-              className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white shadow hover:bg-blue-700"
+              href="/dashboard"
+              className="flex items-center gap-2 rounded-xl bg-sky-500 px-6 py-4 font-semibold hover:bg-sky-400"
             >
-              Open Console
+              Open Dashboard
+              <ArrowRight size={18} />
             </Link>
 
             <Link
-              href="/dashboard"
-              className="rounded-xl border border-slate-300 bg-white px-6 py-3 font-bold text-slate-700 hover:bg-slate-100"
+              href="/login"
+              className="rounded-xl border border-slate-700 px-6 py-4 hover:bg-slate-900"
             >
-              View Dashboard
+              Login
             </Link>
           </div>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-2xl">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h3 className="text-lg font-bold">Operations Snapshot</h3>
-              <p className="text-sm text-slate-500">Hyderabad city overview</p>
+              <p className="text-sm text-slate-400">Hyderabad city overview</p>
             </div>
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
+            <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400">
               Live
             </span>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             {[
-              ["25", "Complaints", "Citizen issues tracked"],
-              ["19", "Pending", "Awaiting department action"],
-              ["15", "Assets", "Infrastructure records"],
-              ["5", "Critical Alerts", "Emergency response items"],
-            ].map(([value, label, desc]) => (
-              <div
-                key={label}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-5"
-              >
-                <p className="text-sm text-slate-500">{label}</p>
-                <p className="mt-2 text-3xl font-bold text-slate-950">
-                  {value}
-                </p>
-                <p className="mt-1 text-xs text-slate-500">{desc}</p>
-              </div>
-            ))}
+              ["128", "Active Complaints", FileText],
+              ["1,284", "City Assets", Building2],
+              ["5", "Critical Alerts", Siren],
+              ["89%", "SLA Compliance", ShieldCheck],
+            ].map(([value, title, Icon]) => {
+              const Component = Icon as React.ElementType;
+
+              return (
+                <div
+                  key={title as string}
+                  className="rounded-2xl border border-slate-800 bg-slate-950 p-6"
+                >
+                  <Component className="mb-4 text-sky-400" />
+                  <p className="text-sm text-slate-400">{title}</p>
+                  <p className="mt-2 text-4xl font-bold">{value}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-5 px-8 pb-16 md:grid-cols-4">
+      <section className="mx-auto grid max-w-7xl gap-6 px-8 pb-20 md:grid-cols-4">
         {[
-          ["Complaint Operations", "Track issues from submission to closure."],
-          ["GIS Command Center", "View alerts, complaints and assets on maps."],
-          ["Asset Maintenance", "Manage lights, pumps, CCTV and signals."],
-          ["Audit & Governance", "Role-based access, logs and reports."],
+          ["Complaint Management", "Complete citizen issue lifecycle."],
+          ["GIS Mapping", "Interactive infrastructure visualization."],
+          ["Asset Monitoring", "Roads, CCTV, streetlights and utilities."],
+          ["Analytics", "Operational dashboards and KPIs."],
         ].map(([title, desc]) => (
           <div
             key={title}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="rounded-2xl border border-slate-800 bg-slate-900 p-6"
           >
-            <h3 className="font-bold text-slate-950">{title}</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-500">{desc}</p>
+            <Map className="mb-5 text-sky-400" />
+            <h3 className="font-semibold">{title}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-400">{desc}</p>
           </div>
         ))}
       </section>
